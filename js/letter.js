@@ -1,0 +1,43 @@
+const modalBackdrop = document.getElementById("modalBackdrop");
+const closeBtn = document.getElementById("closeModalBtn");
+const openLetter = document.getElementById("openLetter");
+const readBtn = document.getElementById("readBtn");
+const letterText = document.getElementById("letterText");
+
+// ✅ ข้อความจดหมาย
+const MESSAGE = `
+สุขสันต์วันครบรอบ 1ปีนะค้าบคุณแฟน
+ขอบคุณที่เข้ามาเป็นส่วนหนึ่งในชีวิตและทำให้ทุกวันมีความหมายมากขึ้น ถึงบางวันเราอาจะมีงอนกันบ้างทะเลาะกันบ้าง แต่สุดท้ายก็ยังอยากมีเธออยู่ข้างๆ เสมอ
+ขอให้เราคอยดูแลและเติบโต ไปด้วยกันแบบนี้นะ
+`;
+
+// 🔓 เปิด modal
+function openModal(){
+  letterText.textContent = MESSAGE.trim();
+  modalBackdrop.style.display = "flex";
+}
+
+// ❌ ปิด modal
+function closeModal(){
+  modalBackdrop.style.display = "none";
+}
+
+// ===== EVENTS =====
+if(openLetter){
+  openLetter.addEventListener("click", openModal);
+}
+
+if(readBtn){
+  readBtn.addEventListener("click", openModal);
+}
+
+if(closeBtn){
+  closeBtn.addEventListener("click", closeModal);
+}
+
+// กดพื้นหลังเพื่อปิด
+modalBackdrop.addEventListener("click", (e)=>{
+  if(e.target === modalBackdrop){
+    closeModal();
+  }
+});
